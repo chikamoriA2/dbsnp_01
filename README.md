@@ -1,7 +1,7 @@
 コマンドは以下のように打ってみて下さい。
-
-task.sh refsnp-chrMT.json.bz2
-
+```
+sh task.sh refsnp-chrMT.json.bz2
+```
 引数として、bz2ファイルを入れる必要があります。
 
 結果が同じであれば、プログラムの違いはあっても、問題はありません。
