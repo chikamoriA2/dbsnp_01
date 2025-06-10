@@ -12,6 +12,9 @@ dir_fm_sec=fm_sec_${refsnp}
 mkdir ${dir_fm_pri}
 mkdir ${dir_fm_sec}
 
+file_log=log_${refsnp}
+touch $file_log
+
 function escape_in_sed (){
 
 	str="$1"
@@ -48,6 +51,7 @@ jq_02=$(escape_in_sed "$jq_02")
 sed_01="s!(.*)!cat ${dir_fm_pri}\/\1 | jq '${jq_01}' | jq -r '${jq_02}' > ${dir_fm_sec}\/\1_sec.tsv!g"
 
 ls ${dir_fm_pri} | sed -r "${sed_01}" | parallel
+# find ${dir_fm_pri}/* | sed -r "${sed_01}" | parallel
 
 cat ${dir_fm_sec}/*.tsv > ${dir_fm_sec}/refsnp-chrY.sec.01.tsv.unsorted
 
